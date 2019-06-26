@@ -12,6 +12,10 @@ class Config:
     MAIL_USERNAME = os.getenv('MAIL_USERNAME')
     MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
     DOMAIN_NAME = os.getenv('DOMAIN_NAME')
+    # Jwt configuration
+    JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')
+    REFRESH_EXP_LENGTH = 30
+    ACCESS_EXP_LENGTH = 10
 
     @staticmethod
     def init_app(app):
