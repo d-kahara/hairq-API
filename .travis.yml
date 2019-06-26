@@ -17,12 +17,13 @@ install:
   - pip install -r requirements.txt
   - pip install coveralls
 
-before-script:
-  - psql -c 'CREATE DATABASE test;' -U postgres
-  - python manage.py migrate
+before_script:
+  - psql -c "CREATE USER test_user WITH PASSWORD 'password12345';"
+  - psql -c 'CREATE DATABASE hairq_test owner test_user;'
+  - psql -c 'CREATE DATABASE store_manager owner test_user;'
 
 script:
-  - coverage run --source=api manage.py test
+  - coverage run -m --source=api pytest
   - coverage report
   - coveralls
 

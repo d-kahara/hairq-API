@@ -26,7 +26,7 @@ elif os.getenv('APP_SETTINGS') == 'production':
     database_url = os.getenv('DATABASE_URL')
 
 sys.path.append(os.getcwd())
-config.set_main_option('sqlalchemy.url', database_url)
+config.set_main_option('sqlalchemy.url', str(database_url))
 
 from helpers.database import Base
 from api.user.models import User
