@@ -21,6 +21,7 @@ graphene-sqlalchemy==2.2.0
 graphql-core==2.1
 graphql-relay==0.4.5
 graphql-server-core==1.1.1
+gunicorn==19.9.0
 importlib-metadata==0.18
 itsdangerous==1.1.0
 Jinja2==2.10.1
