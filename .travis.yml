@@ -1,0 +1,31 @@
+language: 'python'
+
+python:
+  - '3.6'
+
+services:
+  - postgresql
+
+addons:
+  postgresql: '9.6'
+  apt:
+    packages:
+      - postgresql-server-dev-9.6
+
+
+install:
+  - pip install -r requirements.txt
+  - pip install coveralls
+
+before_script:
+  - psql -c "CREATE USER test_user WITH PASSWORD 'password12345';"
+  - psql -c 'CREATE DATABASE hairq_test owner test_user;'
+  - psql -c 'CREATE DATABASE store_manager owner test_user;'
+
+script:
+  - coverage run -m --source=api pytest
+  - coverage report
+  - coveralls
+
+after-success:
+  - coveralls
