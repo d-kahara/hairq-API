@@ -2,10 +2,10 @@ from sqlalchemy import (Column, String, Integer, Enum)
 from flask_bcrypt import generate_password_hash
 
 from helpers.database import Base
-from utils.utility import StateType, Utility
+from utils.utility import StateType, ModelOperations
 
 
-class User(Base, Utility):
+class User(Base, ModelOperations):
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
     email = Column(String, nullable=False)
@@ -18,3 +18,6 @@ class User(Base, Utility):
         self.name = kwargs['name']
         self.password_hash = generate_password_hash(
             kwargs['password_hash']).decode('utf-8')
+
+    def __repr__(self):
+        return '<User {}>'.format(self.name)
