@@ -16,6 +16,11 @@ class Config:
     JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')
     REFRESH_EXP_LENGTH = 30
     ACCESS_EXP_LENGTH = 10
+    GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", None)
+    GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET", None)
+    GOOGLE_DISCOVERY_URL = (
+        "https://accounts.google.com/.well-known/openid-configuration"
+    )
 
     @staticmethod
     def init_app(app):
